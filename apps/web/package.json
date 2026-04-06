@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "react-router dev --port 3000",
     "build": "react-router build",
+    "build:remote": "vite build --config vite.config.remote.ts",
     "preview": "react-router build && serve -s build/client -l 3000",
     "start": "serve -s build/client -l 3000",
     "clean": "rm -rf .turbo && rm -rf .next && rm -rf .react-router && rm -rf node_modules && rm -rf dist && rm -rf build",
@@ -73,6 +74,8 @@
     "uuid": "catalog:"
   },
   "devDependencies": {
+    "@module-federation/vite": "^1.14.1",
+    "@vitejs/plugin-react": "^4.7.0",
     "@plane/tailwind-config": "workspace:*",
     "@plane/typescript-config": "workspace:*",
     "@react-router/dev": "catalog:",

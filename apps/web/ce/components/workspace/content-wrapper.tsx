@@ -13,6 +13,8 @@ import { useAppRailVisibility } from "@/lib/app-rail";
 // local imports
 import { TopNavigationRoot } from "../navigations";
 
+const konnecctEmbedShell = import.meta.env.VITE_KONNECCT_EMBED_SHELL === "1";
+
 export const WorkspaceContentWrapper = observer(function WorkspaceContentWrapper({
   children,
 }: {
@@ -20,6 +22,14 @@ export const WorkspaceContentWrapper = observer(function WorkspaceContentWrapper
 }) {
   // Use the context to determine if app rail should render
   const { shouldRenderAppRail } = useAppRailVisibility();
+
+  if (konnecctEmbedShell) {
+    return (
+      <div className="relative flex size-full flex-col overflow-hidden bg-canvas transition-all duration-300 ease-in-out">
+        <div className="relative size-full flex-grow overflow-hidden p-0">{children}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative flex size-full flex-col overflow-hidden bg-canvas transition-all duration-300 ease-in-out">

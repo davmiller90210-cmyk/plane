@@ -19,8 +19,19 @@ export interface AppHeaderProps {
   rowClassName?: string;
 }
 
+const konnecctEmbedShell = import.meta.env.VITE_KONNECCT_EMBED_SHELL === "1";
+
 export const AppHeader = observer(function AppHeader(props: AppHeaderProps) {
   const { header, mobileHeader, className, rowClassName } = props;
+
+  if (konnecctEmbedShell) {
+    return (
+      <div className={cn("z-[18] flex min-h-0 flex-1 flex-col", className)}>
+        <div className="w-full min-h-0 flex-1">{header}</div>
+        {mobileHeader && mobileHeader}
+      </div>
+    );
+  }
 
   return (
     <div className={cn("z-[18]", className)}>

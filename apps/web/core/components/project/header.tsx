@@ -23,6 +23,8 @@ import { useUserPermissions } from "@/hooks/store/user";
 import HeaderFilters from "./filters";
 import { ProjectSearch } from "./search-projects";
 
+const konnecctEmbedShell = import.meta.env.VITE_KONNECCT_EMBED_SHELL === "1";
+
 export const ProjectsBaseHeader = observer(function ProjectsBaseHeader() {
   // i18n
   const { t } = useTranslation();
@@ -58,7 +60,7 @@ export const ProjectsBaseHeader = observer(function ProjectsBaseHeader() {
         <div className="hidden md:flex">
           <HeaderFilters />
         </div>
-        {isAuthorizedUser && !isArchived ? (
+        {isAuthorizedUser && !isArchived && !konnecctEmbedShell ? (
           <Button
             variant="primary"
             size="lg"

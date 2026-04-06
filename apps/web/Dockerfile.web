@@ -80,6 +80,12 @@ ENV TURBO_TELEMETRY_DISABLED=1
 
 RUN pnpm turbo run build --filter=web
 
+# Module Federation remote only (vite.config.remote.ts); avoids coupling MF to the React Router SSR build.
+RUN cd apps/web && pnpm run build:remote \
+  && cp -f build/mf-remote/remoteEntry.js build/client/remoteEntry.js \
+  && mkdir -p build/client/assets \
+  && (cp -r build/mf-remote/assets/. build/client/assets/ 2>/dev/null || true)
+
 # *****************************************************************************
 # STAGE 3: Serve with nginx
 # *****************************************************************************
