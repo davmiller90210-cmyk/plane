@@ -67,6 +67,10 @@ ENV VITE_SPACE_BASE_PATH=$VITE_SPACE_BASE_PATH
 ARG VITE_WEB_BASE_URL=""
 ENV VITE_WEB_BASE_URL=$VITE_WEB_BASE_URL
 
+# Subpath on the public host (e.g. app.konnecct.com/_konnecct/plane/). Must match outer nginx strip + Vite `base`.
+ARG VITE_BASE_PATH="/"
+ENV VITE_BASE_PATH=$VITE_BASE_PATH
+
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV TURBO_TELEMETRY_DISABLED=1
 

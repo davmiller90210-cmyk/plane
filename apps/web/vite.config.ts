@@ -6,6 +6,11 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
+// Same-origin embed on app.* (e.g. nginx proxies /_konnecct/plane/ → Plane; must not use "/" or Twenty serves /assets).
+const rawBase = process.env.VITE_BASE_PATH?.trim() || "/";
+const base =
+  rawBase === "/" ? "/" : rawBase.endsWith("/") ? rawBase : `${rawBase}/`;
+
 // Expose only vars starting with VITE_
 const viteEnv = Object.keys(process.env)
   .filter((k) => k.startsWith("VITE_"))
@@ -15,6 +20,7 @@ const viteEnv = Object.keys(process.env)
   }, {});
 
 export default defineConfig(() => ({
+  base,
   define: {
     "process.env": JSON.stringify(viteEnv),
   },
