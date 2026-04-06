@@ -24,15 +24,6 @@ catalogs:
     '@react-router/node':
       specifier: 7.13.1
       version: 7.13.1
-    '@react-router/serve':
-      specifier: 7.13.1
-      version: 7.13.1
-    '@tiptap/core':
-      specifier: ^2.22.3
-      version: 2.26.3
-    '@tiptap/html':
-      specifier: ^2.22.3
-      version: 2.26.2
     '@types/lodash-es':
       specifier: 4.17.12
       version: 4.17.12
@@ -75,9 +66,6 @@ catalogs:
     swr:
       specifier: 2.2.4
       version: 2.2.4
-    tsdown:
-      specifier: 0.16.0
-      version: 0.16.0
     uuid:
       specifier: 13.0.0
       version: 13.0.0

@@ -5,14 +5,26 @@
  */
 
 import { startTransition, StrictMode } from "react";
-import { hydrateRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import { HydratedRouter } from "react-router/dom";
 
+const MF_ROOT_ID = "konnecct-plane-mf-root";
+
 startTransition(() => {
-  hydrateRoot(
-    document,
+  const useMfHost = typeof window !== "undefined" && window.__KONNECCT_PLANE_MF_HOST__ === true;
+  const mfEl = typeof document !== "undefined" ? document.getElementById(MF_ROOT_ID) : null;
+  const app = (
     <StrictMode>
       <HydratedRouter />
     </StrictMode>
   );
+
+  if (useMfHost) {
+    if (!mfEl) {
+      return;
+    }
+    createRoot(mfEl).render(app);
+    return;
+  }
+  hydrateRoot(document, app);
 });

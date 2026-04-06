@@ -19,13 +19,22 @@ const viteEnv = Object.keys(process.env)
     return a;
   }, {});
 
-export default defineConfig(() => ({
+export default defineConfig(({ command }) => ({
   base,
+  // Bundle for the SSR pass that generates SPA index.html (Node ESM cannot load file-type as CJS named exports).
+  ssr: {
+    noExternal: ["file-type"],
+  },
   define: {
     "process.env": JSON.stringify(viteEnv),
   },
   build: {
     assetsInlineLimit: 0,
+  },
+  server: {
+    host: "127.0.0.1",
+    origin: command === "serve" ? "http://127.0.0.1:3000" : undefined,
+    port: 3000,
   },
   plugins: [reactRouter(), tsconfigPaths({ projects: [path.resolve(__dirname, "tsconfig.json")] })],
   resolve: {
@@ -36,9 +45,6 @@ export default defineConfig(() => ({
       "next/script": path.resolve(__dirname, "app/compat/next/script.tsx"),
     },
     dedupe: ["react", "react-dom", "@headlessui/react"],
-  },
-  server: {
-    host: "127.0.0.1",
   },
   // No SSR-specific overrides needed; alias resolves to ESM build
 }));

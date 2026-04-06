@@ -1,7 +1,7 @@
 {
-  "name": "Plane",
-  "short_name": "Plane",
-  "description": "Plane helps you plan your issues, cycles, and product modules.",
+  "name": "Konnecct",
+  "short_name": "Konnecct",
+  "description": "Konnecct helps you plan your work items, cycles, and projects.",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#f9fafb",

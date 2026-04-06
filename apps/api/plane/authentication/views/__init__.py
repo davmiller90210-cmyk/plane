@@ -13,6 +13,8 @@ from .app.gitea import GiteaCallbackEndpoint, GiteaOauthInitiateEndpoint
 from .app.google import GoogleCallbackEndpoint, GoogleOauthInitiateEndpoint
 from .app.magic import MagicGenerateEndpoint, MagicSignInEndpoint, MagicSignUpEndpoint
 
+from .app.konnecct_bridge import KonnecctBridgeView
+
 from .app.signout import SignOutAuthEndpoint
 
 

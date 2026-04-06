@@ -5,6 +5,7 @@
 from django.urls import path
 
 from .views import (
+    KonnecctBridgeView,
     CSRFTokenEndpoint,
     ForgotPasswordEndpoint,
     SetUserPasswordEndpoint,
@@ -57,6 +58,8 @@ urlpatterns = [
     path("spaces/sign-out/", SignOutAuthSpaceEndpoint.as_view(), name="space-sign-out"),
     # csrf token
     path("get-csrf-token/", CSRFTokenEndpoint.as_view(), name="get_csrf_token"),
+    # Konnecct CRM session bridge (JWT from crm-server)
+    path("konnecct-bridge/", KonnecctBridgeView.as_view(), name="konnecct-bridge"),
     # Magic sign in
     path("magic-generate/", MagicGenerateEndpoint.as_view(), name="magic-generate"),
     path("magic-sign-in/", MagicSignInEndpoint.as_view(), name="magic-sign-in"),
