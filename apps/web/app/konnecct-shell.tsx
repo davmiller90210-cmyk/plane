@@ -4,7 +4,6 @@
  * (createRoot on #konnecct-plane-mf-root).
  */
 import { startTransition, StrictMode, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { LogoSpinner } from "@/components/common/logo-spinner";
 
 const MF_ROOT_ID = "konnecct-plane-mf-root";
 
@@ -147,10 +146,8 @@ export default function KonnecctShell({
     <div ref={shellRef} className="relative h-full w-full min-h-0 overflow-hidden bg-canvas">
       <div id={MF_ROOT_ID} className="relative h-full w-full min-h-0" />
       {showSpinner ? (
-        <div className="absolute inset-0 z-10 flex items-center justify-center bg-canvas">
-          <StrictMode>
-            <LogoSpinner />
-          </StrictMode>
+        <div className="absolute inset-0 z-10 flex items-center justify-center bg-canvas text-sm text-secondary">
+          <StrictMode>Loading Konnecct Projects…</StrictMode>
         </div>
       ) : null}
     </div>
